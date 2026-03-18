@@ -3,8 +3,10 @@ import { AuthProvider } from "./auth/AuthContext";
 import RequireAuth from "./auth/RequireAuth";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import ProductsList from "./pages/ProductsList";
+import ProductsList from "./pages/ProductList";
 import ProductForm from "./pages/ProductForm";
+import BranchesPage from "./pages/BranchesPage";
+import BranchInventoryPage from "./pages/BranchInventoryPage";
 
 function Layout({ children }) {
   return (
@@ -12,6 +14,8 @@ function Layout({ children }) {
       <nav style={{ padding: 12, borderBottom: "1px solid #333", display: "flex", gap: 10 }}>
         <Link to="/">Dashboard</Link>
         <Link to="/products">Productos</Link>
+        <Link to="/branches">Sucursales</Link>
+        <Link to="/branch-inventory">Inventario por sucursal</Link>
       </nav>
       {children}
     </div>
@@ -57,6 +61,24 @@ export default function App() {
             element={
               <RequireAuth>
                 <Layout><ProductForm /></Layout>
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/branches"
+            element={
+              <RequireAuth>
+                <Layout><BranchesPage /></Layout>
+              </RequireAuth>
+            }
+          />
+
+          <Route
+            path="/branch-inventory"
+            element={
+              <RequireAuth>
+                <Layout><BranchInventoryPage /></Layout>
               </RequireAuth>
             }
           />

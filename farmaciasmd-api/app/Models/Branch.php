@@ -4,21 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Branch extends Model
 {
     protected $fillable = [
-        'sku',
         'name',
-        'brand',
-        'category',
-        'description',
-        'price',
-        'min_stock',
-        'active'
+        'code',
+        'address',
+        'active',
     ];
 
     protected $casts = [
-        'price' => 'decimal:2',
         'active' => 'boolean',
     ];
 
